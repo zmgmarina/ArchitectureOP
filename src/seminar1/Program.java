@@ -14,16 +14,18 @@ public class Program {
 
 //        BottleOfWater bottleOfWater1 =
 //                new BottleOfWater("ООО Чистый Источник", "Бутылка с водой #3", -90.15, 1.5);
+
 //        System.out.println(bottleOfWater1.displayInfo());
 
-
+/*
+* Ниже мы апкастили объекты в тип родителького класса Product, чтобы создать список
+* */
         Product bottleOfMilk1 = new BottleOfMilk("ООО Буренка", "Бутылка с молоком #1", 115.15, 1.5, 4);
         Product bottleOfMilk2 = new BottleOfMilk("ООО Долина", "Бутылка с молоком #2", 90, 1, 3);
         Product bottleOfWater1 = new BottleOfWater("ООО Исток", "Бутылка с водой 1", 80, 1.5);
         Product bottleOfWater2 = new BottleOfWater("ООО Родник", "Бутылка с водой 2", 105, 2);
         Product chips1 = new Chips("Potato", "Чипсы1", 150, "Бекон");
         Product chips2 = new Chips("Lays", "Чипсы2", 120, "Сыр");
-
 
 
         List<Product> products = new ArrayList<>();
@@ -34,7 +36,15 @@ public class Program {
         products.add(chips1);
         products.add(chips2);
 
+        for (Product prod : products) {
+            System.out.println(prod.displayInfo()); // полиморфный вызов метода
+
+        }
+
         VendingMachine vendingMachine = new VendingMachine(products);
+
+
+
 
         BottleOfWater bottleOfWaterResult = vendingMachine.getBottleOfWater(1.5);
         if (bottleOfWaterResult != null){
