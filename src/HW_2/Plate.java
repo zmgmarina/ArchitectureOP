@@ -13,8 +13,10 @@ public class Plate {
     }
 
     public void addFood(){
-        setFood(getFood()+15);
+        setFood(getFood() + 10);
     }
+
+
 
     public int getFood() {
         return food;

@@ -31,16 +31,18 @@ public class Main {
                     System.out.printf("Котик %s наелся\n", cat.getName());
                     plate.info();
                 }
-                if (plate.getFood() < cat.getAppetite()) {
-                    plate.addFood();
+                   if (plate.getFood() < cat.getAppetite()) {
+                       while (plate.getFood() < cat.getAppetite())
+                           plate.addFood();
+
                 }
             }
-
         }
 
     }
 
 }
+
 
 
 
