@@ -2,7 +2,7 @@ package HW_Cat;
 
 public class Cat {
     private String name;
-    private int appetite;
+    private final int appetite;
 
     private int satiety;
 
