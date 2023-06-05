@@ -1,6 +1,4 @@
-package HW_2;
-
-import java.util.List;
+package HW2;
 
 public class Cat {
     private String name;

@@ -1,4 +1,4 @@
-package HW_2;
+package HW2;
 
 public class Plate {
     private int food;
