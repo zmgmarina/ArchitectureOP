@@ -1,4 +1,4 @@
-package Lesson_07.Ex006;
+package Lesson_01.Ex005;
 
 public class Program {
     public static void main(String[] args) {
@@ -11,10 +11,5 @@ public class Program {
         Priest hero3 = new Priest();
         System.out.println(hero3.getInfo());
 
-        hero3.GetDamage(hero2.Attack());
-        hero3.GetDamage(hero3.Attack());
-        System.out.println(hero3.getInfo());
-        System.out.println(hero2.getInfo());
-        //hero3.GetDamage(hero3.Attack());
     }
 }

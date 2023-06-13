@@ -12,7 +12,6 @@ public class Cat {
         this.satiety = satiety;
     }
 
-
     public int getAppetite() {
         return appetite;
     }
@@ -34,6 +33,9 @@ public class Cat {
     }
 
 }
+
+
+
 
 
 
