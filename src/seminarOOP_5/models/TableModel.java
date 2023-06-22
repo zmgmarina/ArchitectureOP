@@ -13,29 +13,31 @@ public class TableModel implements Model {
 
     /**
      * Получение списка всех столиков
-     * */
-    public Collection<Table> loadTables(){
-        if (tables == null){
+     */
+    public Collection<Table> loadTables() {
+        if (tables == null) {
             tables = new ArrayList<>();
             tables.add(new Table());
             tables.add(new Table());
             tables.add(new Table());
             tables.add(new Table());
             tables.add(new Table());
-        } return tables;
+        }
+        return tables;
     }
 
     /**
      * Бронирование столика
+     *
      * @param reservationDate Дата бронирования
-     * @param tableNo Номер столика
-     * @param name Имя клиента
+     * @param tableNo         Номер столика
+     * @param name            Имя клиента
      * @return Номер брони
      */
 
-    public int reservationTable(Date reservationDate, int tableNo, String name){
+    public int reservationTable(Date reservationDate, int tableNo, String name) {
         for (Table table : tables) {
-            if (table.getNo() == tableNo){
+            if (table.getNo() == tableNo) {
                 Reservation reservation = new Reservation(reservationDate, name);
                 table.getReservations().add(reservation);
                 return reservation.getId();
@@ -46,7 +48,7 @@ public class TableModel implements Model {
     }
 
 
-    public int changeReservationTable(int oldReservation, Date reservationDate, int tableNo, String name){
+    public int changeReservationTable(int oldReservation, Date reservationDate, int tableNo, String name) {
         for (Table table : tables) {
             for (Reservation reservation : table.getReservations()) {
                 if (reservation.getId() == oldReservation) {
@@ -59,6 +61,25 @@ public class TableModel implements Model {
         throw new RuntimeException("Некорректный номер столика");
     }
 
+    /**
+     * Вариант преподавателя метода отмены резервации столика
+     */
+/* public int changeReservationTable(int oldReservation, int tableNo){
+        for (Table table : tables) {
+              if(table.getNo() == tableNo){
+               Reservation r = null;
+               for (Reservation reservation : table.getReservations()) {
+                  if (reservation.getId() == oldReservation) {
+                      r = reservation;
+                      break;
+                  }
+               }
+               if (r != null){
+                  table.getReservations().remove(r);
+                  break;
+               }
+            }
 
+ */
 
 }
