@@ -1,8 +1,6 @@
 package Algoritm.HW;
 
-import Algoritm.less4.RedBlackTree;
-
-public class LeftRedBlackTree {
+public class RedBlackTree {
    // Необходимо превратить собранное на семинаре дерево поиска в полноценное левостороннее красно-черное дерево.
    // И реализовать в нем метод добавления новых элементов с балансировкой.
    public Node root;
