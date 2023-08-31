@@ -1,6 +1,6 @@
 package Algoritm.HW;
 
-public class RedBlackTree {
+public class LeftRedBlackTree {
    // Необходимо превратить собранное на семинаре дерево поиска в полноценное левостороннее красно-черное дерево.
    // И реализовать в нем метод добавления новых элементов с балансировкой.
    public Node root;
