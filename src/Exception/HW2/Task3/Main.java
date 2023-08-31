@@ -18,11 +18,7 @@ public class Main {
         try {
             checkingForExceptions(a, b, c);
 
-        }catch (NumberOutOfRangeException e){
-            System.out.println(e.getMessage());
-        }catch (NumberSumException e){
-            System.out.println(e.getMessage());
-        }catch (DivizionByZeroException e){
+        }catch (NumberOutOfRangeException | NumberSumException | DivizionByZeroException e){
             System.out.println(e.getMessage());
         }
     }
