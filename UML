@@ -1,0 +1,54 @@
+@startuml
+class HW_Employee.Worker {
++ double calculateSalary()
++ String toString()
++ int compareTo(Employee)
+}
+class HW_Employee.AgeComparator {
++ int compare(Employee,Employee)
+}
+
+class HW_Employee.Freelancer {
+# int countOfWorkingDays
+# int countOfWorkingHours
++ String toString()
++ double calculateSalary()
++ int getCountOfWorkingDays()
++ void setCountOfWorkingDays(int)
++ int getCountOfWorkingHours()
++ void setCountOfWorkingHours(int)
++ int compareTo(Employee)
+}
+
+abstract class HW_Employee.Employee {
+# String name
+# String surname
+# int age
+# int workExperience
+# double salary
++ int getAge()
++ String getName()
++ String getSurname()
++ int getWorkExperience()
++ double getSalary()
++ {abstract}double calculateSalary()
+}
+
+class HW_Employee.WorkExperienceComparator {
++ int compare(Employee,Employee)
+}
+
+class HW_Employee.Main {
+~ {static} Random random
+~ {static} Employee generateEmployee()
++ {static} void main(String[])
+}
+Main ..> Employee : uses >
+
+HW_Employee.Employee <|-- HW_Employee.Worker
+java.util.Comparator <|.. HW_Employee.AgeComparator
+HW_Employee.Employee <|-- HW_Employee.Freelancer
+HW_Employee.Comparable <|.. HW_Employee.Employee
+java.util.Comparator <|.. HW_Employee.WorkExperienceComparator
+@enduml
+
