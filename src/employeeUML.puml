@@ -45,8 +45,6 @@ class HW_Employee.Main {
 }
 Main ..> Employee : uses >
 
-
-
 HW_Employee.Employee <|-- HW_Employee.Worker
 java.util.Comparator <|.. HW_Employee.AgeComparator
 HW_Employee.Employee <|-- HW_Employee.Freelancer
