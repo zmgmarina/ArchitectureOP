@@ -1,5 +1,8 @@
 package Architecture_op.HW_3;
 
+//Класс конкретной модели телефона, имплементирует конкретный интерфейс с функциями, которые выполняет данная модель телефона,
+// реализует его методы, плюс реализует метод  Call() класса Phone, от которого наследуется 
+
 public class Nokia extends Phone implements PhoneFunctionsNokia{
 
     @Override
@@ -20,7 +23,7 @@ public class Nokia extends Phone implements PhoneFunctionsNokia{
     }
 
     @Override
-    void Call() {
+    void {
         System.out.println("Nokia calling");
     }
 }
