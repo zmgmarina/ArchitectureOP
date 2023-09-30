@@ -23,7 +23,7 @@ public class Nokia extends Phone implements PhoneFunctionsNokia{
     }
 
     @Override
-    void {
+    void Call(){
         System.out.println("Nokia calling");
     }
 }
