@@ -1,6 +1,6 @@
 package Architecture_op.HW_3;
 
-import java.util.ArrayList;
+// Создание экземляров классов Samsung Nokia и Sony с вызовом методов
 
 public class Main {
     public static void main(String[] args) {
