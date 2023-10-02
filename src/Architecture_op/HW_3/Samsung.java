@@ -1,5 +1,8 @@
 package Architecture_op.HW_3;
 
+//Также класс модели телефона, имплементирует конкретный интерфейс с функциями, которые выполняет данная модель телефона,
+// реализует его методы, плюс реализует метод  Call() класса Phone, от которого наследуется 
+
 public class Samsung extends  Phone implements PhoneFunctionsSamsung{
     @Override
     public void SendSMS() {

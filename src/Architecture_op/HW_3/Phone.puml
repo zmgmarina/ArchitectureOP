@@ -1,0 +1,60 @@
+@startuml
+class Architecture_op.HW_3.Main {
++ {static} void main(String[])
+}
+interface Architecture_op.HW_3.PhoneFunctionsSony {
+~ void SendSMS()
+~ void SendEMail()
+~ void PhotoVideoShooting()
+}
+interface Architecture_op.HW_3.PhoneFunctionsNokia {
+~ void SendSMS()
+~ void Bluetooth()
+~ void PhotoShooting()
+}
+class Architecture_op.HW_3.Nokia {
++ void SendSMS()
++ void Bluetooth()
++ void PhotoShooting()
+~ void Call()
+}
+interface Architecture_op.HW_3.PhoneFunctionsSamsung {
+~ void SendSMS()
+~ void SendEMail()
+~ void Bluetooth()
+~ void PhotoVideoShooting()
+}
+class Architecture_op.HW_3.Sony {
++ void SendSMS()
++ void SendEMail()
++ void PhotoVideoShooting()
+~ void Call()
+}
+abstract class Architecture_op.HW_3.Phone {
+~ {abstract}void Call()
+}
+class Architecture_op.HW_3.Samsung {
++ void SendSMS()
++ void SendEMail()
++ void Bluetooth()
++ void PhotoVideoShooting()
+~ void Call()
+}
+
+'Реализация интерфейсов
+PhoneFunctionsSony <|.. Sony
+PhoneFunctionsNokia <|.. Nokia
+PhoneFunctionsSamsung <|.. Samsung
+
+'Наследование от абстрактного класса Phone
+Phone <|-- Sony
+Phone <|-- Nokia
+Phone <|-- Samsung
+
+'Создание и инициализация объектов
+Main ..> Sony : creates
+Main ..> Samsung : creates
+Main ..> Nokia : creates
+Main ..> Phone : initiates
+
+@enduml
