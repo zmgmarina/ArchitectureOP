@@ -1,0 +1,95 @@
+@startuml
+' Интерфейсы
+'Интерфейс UserActions содержит методы, позволяющие пользователю:
+ ' - авторизоваться, выбрать маршрут, проверить доступность билетов и баланс денежных средств
+
+interface UserActions {
+  +authorize(username: String, password: String): boolean
+  +selectRoute(routeId: String, time: DateTime): boolean
+  +checkTicketAvailability(): boolean
+  +checkFunds(): boolean
+}
+
+'Интерфейс TicketActions содержит методы, описывающие действия с билетом:
+'- бронирование билета, списание средств, подтверждение покупки, обновление доступности билетов, отмена бронирования
+interface TicketActions {
+  +reserveTicket(): boolean
+  +deductFunds(): boolean
+  +confirmPurchase(): boolean
+  +updateTicketAvailability(): void
+  +cancelReservation(): boolean
+}
+
+' Классы и операции
+
+'Класс User представляющий пользователя системы, имплементирует интерфейс UserActions
+class User implements UserActions {
+' предусловие -->
+  +authorize(username: String, password: String): boolean
+  +selectRoute(routeId: String, time: DateTime): boolean
+  +checkTicketAvailability(): boolean
+  +checkFunds(): boolean
+ ' <-- предусловие
+ ' постусловия -->
+  +reserveTicket(): boolean
+  +deductFunds(): boolean
+  +confirmPurchase(): boolean
+  +updateTicketAvailability(): void
+  +cancelReservation(): boolean
+ ' <-- постусловия
+}
+
+' Абстрактный класс Ticket имплементирует интерфейс TicketActions
+' содержит поля: Номер маршрута, дата и время отправления, стоимость билета
+abstract class Ticket implements TicketActions {
+  +number: int
+  +routeId: String
+  +departureTime: DateTime
+  +price: Money
+}
+
+'Класс пользователя реализует класс BusTicket
+User --|> BusTicket : uses
+
+'Класс BusTicket наследует класс Ticket и содержит поля:
+'номер билета, номер маршрута, дата и время отправления, стоимость билета
+class BusTicket extends Ticket {
+  +number: int
+  +routeId: String
+  +departureTime: DateTime
+  +price: Money
+}
+
+' Предусловия
+'Пользователь должен быть авторизован в системе
+User --> User : authorize(username, password)
+'Пользователь должен выбрать конкретный маршрут и время
+User --> User : selectRoute(routeId, time)
+'Должны быть доступны билеты на выбранный маршрут и время
+User --> User : checkTicketAvailability()
+'У пользователя должно быть достаточно средств для бронирования
+User --> User : checkFunds()
+
+'Бронирование билета
+User --> BusTicket : reserveTicket()
+
+'Постусловия
+'при успешном выполнении предусловий:
+'списываются средства со счета пользователя
+User --> User : deductFunds()
+'покупка билета подтверждается
+User --> BusTicket: confirmPurchase()
+'обновляется список доступных билетов
+User --> BusTicket : updateTicketAvailability()
+'при необходимости бронь с билета снимается
+User --> User : cancelReservation()
+
+' Инварианты
+'денежных средств на счету пользователя должно быть больше или равно стоимости выбранного билета
+User --> User : [invariant] Funds >= busTicket.price
+'стоимость билета на автобус должна быть больше нуля
+BusTicket --> BusTicket : [invariant] Price > 0
+'стоимость билета должна быть больше нуля
+Ticket --> Ticket : [invariant] Price > 0
+
+@enduml
