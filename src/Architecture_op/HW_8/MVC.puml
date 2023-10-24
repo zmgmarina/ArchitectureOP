@@ -1,0 +1,40 @@
+@startuml
+class Main {
++ {static} void main(String[])
+}
+class EmployeeModel {
+- int id
+- String name
+- String job
++ int getId()
++ String getName()
++ String getJob()
++ void setId(int)
++ void setName(String)
++ void setJob(String)
+}
+class Controller {
+- EmployeeModel employeeModel
+- EmployeeView employeeView
++ void setEmployeeId(int)
++ int getEmployeeId()
++ void setEmployeeName(String)
++ String getEmployeeName()
++ void setEmployeeJob(String)
++ String getEmployeeJob()
++ void updateView()
+}
+class EmployeeView {
++ void printEmployeeInformation(EmployeeModel)
+}
+
+Controller o-- "1..*" EmployeeView : uses
+Controller o-- "1" EmployeeModel : uses
+Controller -- "1" EmployeeView : updates
+
+Main ..> EmployeeView : creates
+Main ..> EmployeeModel : creates
+Main ..> Controller : creates
+
+
+@enduml
