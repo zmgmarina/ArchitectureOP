@@ -3,9 +3,6 @@ package Architecture_op.HW_10;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * В этом классе
- */
 public class UnitOfWork {
 
 
